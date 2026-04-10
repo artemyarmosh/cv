@@ -12,21 +12,21 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --black: #000;
-      --white: #fff;
-      --off-white: #f2f2f0;
-      --grey-1: #e0e0de;
-      --grey-2: #aaa;
-      --grey-3: #666;
-      --grey-4: #333;
-      --grey-5: #1a1a1a;
-      --border: #222;
-      --line: #e5e5e3;
+      --black: #f0f0ee;
+      --white: #111111;
+      --off-white: #ffffff;
+      --grey-1: #2a2a2a;
+      --grey-2: #555555;
+      --grey-3: #888888;
+      --grey-4: #c0c0bc;
+      --grey-5: #e8e8e4;
+      --border: #ddddd8;
+      --line: #e0e0dc;
       --sans: 'Space Grotesk', -apple-system, sans-serif;
       --mono: 'Space Mono', monospace;
     }
 
-    ::selection { background: #fff; color: #000; }
+    ::selection { background: #111; color: #fff; }
 
     html { scroll-behavior: smooth; }
 
@@ -52,8 +52,9 @@
       justify-content: space-between;
       padding: 0 32px;
       border-bottom: 1px solid var(--border);
-      background: rgba(0,0,0,0.9);
-      backdrop-filter: blur(10px);
+      background: rgba(255,255,255,0.88);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
     }
     .nav-logo {
       font-family: var(--mono);
@@ -89,6 +90,7 @@
       border-bottom: 1px solid var(--border);
       position: relative;
       overflow: hidden;
+      background: var(--off-white);
     }
     #hero-canvas {
       position: absolute;
@@ -416,7 +418,7 @@
     .status-dot {
       width: 6px; height: 6px;
       border-radius: 50%;
-      background: #aaa;
+      background: #22c55e;
       animation: pulse 2.5s ease-in-out infinite;
     }
     @keyframes pulse {
@@ -855,7 +857,7 @@
         }
 
         /* draw lines between nearby dots when mouse is close */
-        ctx.strokeStyle = 'rgba(255,255,255,0.06)';
+        ctx.strokeStyle = 'rgba(0,0,0,0.05)';
         ctx.lineWidth = 0.5;
         for (let i = 0; i < dots.length; i++) {
           const a = dots[i];
@@ -867,8 +869,8 @@
             const ddx = a.x - b.x, ddy = a.y - b.y;
             const dd = Math.sqrt(ddx * ddx + ddy * ddy);
             if (dd < CONNECT_R) {
-              const alpha = (1 - dd / CONNECT_R) * 0.18 * (1 - daMouse / (REPEL_R * 1.4));
-              ctx.strokeStyle = `rgba(255,255,255,${alpha})`;
+              const alpha = (1 - dd / CONNECT_R) * 0.12 * (1 - daMouse / (REPEL_R * 1.4));
+              ctx.strokeStyle = `rgba(0,0,0,${alpha})`;
               ctx.beginPath();
               ctx.moveTo(a.x, a.y);
               ctx.lineTo(b.x, b.y);
@@ -882,11 +884,11 @@
           const dx = d.x - mouse.x, dy = d.y - mouse.y;
           const dist = Math.sqrt(dx * dx + dy * dy);
           const alpha = dist < REPEL_R
-            ? 0.6 + (1 - dist / REPEL_R) * 0.4
-            : 0.6;
+            ? 0.18 + (1 - dist / REPEL_R) * 0.18
+            : 0.18;
           ctx.beginPath();
           ctx.arc(d.x, d.y, DOT_R, 0, Math.PI * 2);
-          ctx.fillStyle = `rgba(255,255,255,${alpha})`;
+          ctx.fillStyle = `rgba(0,0,0,${alpha})`;
           ctx.fill();
         }
 
