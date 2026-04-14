@@ -217,6 +217,35 @@
       color: #555;
     }
 
+    /* ── PROJECT EXAMPLES ── */
+    .proj-examples {
+      margin: 8px 0 6px;
+    }
+    .proj-label {
+      font-size: 10px;
+      color: #888;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 5px;
+    }
+    .proj-list {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 6px 14px;
+    }
+    .proj-link {
+      font-size: 11px;
+      color: #0052cc;
+      text-decoration: none;
+    }
+    .proj-link:hover { text-decoration: underline; }
+    .proj-nda {
+      font-size: 11px;
+      color: #999;
+      font-style: italic;
+    }
+
     /* ── CURSOR ── */
     #cur-dot, #cur-ring {
       position: fixed; top: 0; left: 0;
@@ -277,12 +306,20 @@
       <div class="exp-date">Sep 2024 — now</div>
       <div class="exp-right">
         <p class="exp-title-line">Entire Framework, Product Manager / Engineering Manager, Agency</p>
-        <p class="exp-desc">A Kyiv-based development and design bureau building digital products for businesses and creators.</p>
+        <p class="exp-desc">Boutique development and design bureau delivering high-quality digital products — spanning showcase sites, e-commerce platforms, and media tools for businesses and creators.</p>
         <ul class="exp-bullets">
           <li>Overseeing product direction and delivery across client projects spanning showcase sites, e-commerce, and media platforms</li>
           <li>Coordinating cross-functional work between design and engineering teams, ensuring quality and timeline alignment</li>
           <li>Contributing to architectural decisions and external integration strategies</li>
         </ul>
+        <div class="proj-examples">
+          <p class="proj-label">Client projects</p>
+          <div class="proj-list">
+            <a class="proj-link" href="https://banda.agency/" target="_blank" rel="noopener">banda.agency ↗</a>
+            <a class="proj-link" href="https://spells-ai.com/" target="_blank" rel="noopener">spells-ai.com ↗</a>
+            <span class="proj-nda">+ additional projects available on request (NDA)</span>
+          </div>
+        </div>
         <a class="more-link" href="https://entireframework.com/" target="_blank" rel="noopener">More about Entire Framework</a>
       </div>
     </div>
