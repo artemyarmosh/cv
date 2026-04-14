@@ -3,923 +3,520 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Artem Yarmosh</title>
+  <title>Artem Yarmosh — CV</title>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23000'/%3E%3Ctext x='16' y='22' text-anchor='middle' font-family='system-ui,sans-serif' font-weight='700' font-size='13' letter-spacing='-0.5' fill='white'%3EAY%3C/text%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --black: #f0f0ee;
-      --white: #111111;
-      --off-white: #ffffff;
-      --grey-1: #2a2a2a;
-      --grey-2: #555555;
-      --grey-3: #888888;
-      --grey-4: #c0c0bc;
-      --grey-5: #e8e8e4;
-      --border: #ddddd8;
-      --line: #e0e0dc;
-      --sans: 'Space Grotesk', -apple-system, sans-serif;
-      --mono: 'Space Mono', monospace;
-    }
-
-    ::selection { background: #111; color: #fff; }
-
-    html { scroll-behavior: smooth; }
-
-    * { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='56' viewBox='0 0 56 56'%3E%3Cline x1='54' y1='54' x2='24' y2='24' stroke='%23b71c1c' stroke-width='6' stroke-linecap='round'/%3E%3Cline x1='52' y1='55' x2='25' y2='27' stroke='%23ef5350' stroke-width='2' stroke-linecap='round' opacity='0.5'/%3E%3Cg transform='translate(12,12) rotate(-45)'%3E%3Crect x='-4' y='0' width='20' height='13' rx='5' fill='white' stroke='%23222' stroke-width='1.5'/%3E%3Crect x='-3.5' y='-13' width='7' height='15' rx='3.5' fill='white' stroke='%23222' stroke-width='1.5'/%3E%3Crect x='4' y='-7' width='5' height='9' rx='2.5' fill='white' stroke='%23222' stroke-width='1.5'/%3E%3Crect x='10' y='-4' width='4.5' height='6' rx='2' fill='white' stroke='%23222' stroke-width='1.5'/%3E%3C/g%3E%3C/svg%3E") 3 3, pointer !important; }
+    * { cursor: none !important; }
+    ::selection { background: #000; color: #fff; }
 
     body {
-      background: var(--black);
-      color: var(--white);
-      font-family: var(--sans);
-      font-size: 15px;
+      background: #fff;
+      color: #000;
+      font-family: 'Inter', system-ui, sans-serif;
+      font-size: 13px;
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
     }
 
-    /* ─── NAV ─────────────────────────────────── */
-    nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
-      height: 56px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 32px;
-      border-bottom: 1px solid var(--border);
-      background: rgba(255,255,255,0.88);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
+    .page {
+      max-width: 740px;
+      margin: 0 auto;
+      padding: 52px 40px 80px;
     }
-    .nav-logo {
-      font-family: var(--mono);
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 0.04em;
-      text-decoration: none;
-      color: var(--white);
-      text-transform: uppercase;
-    }
-    .nav-links {
-      display: flex;
-      gap: 32px;
-      list-style: none;
-    }
-    .nav-links a {
-      font-family: var(--mono);
-      font-size: 11px;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--grey-2);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-    .nav-links a:hover { color: var(--white); }
 
-    /* ─── HERO ────────────────────────────────── */
-    #hero {
-      min-height: 100vh;
+    /* ── HEADER ── */
+    .cv-header {
       display: grid;
-      grid-template-rows: 1fr auto;
-      padding: 56px 0 0;
-      border-bottom: 1px solid var(--border);
-      position: relative;
-      overflow: hidden;
-      background: var(--off-white);
-    }
-    #hero-canvas {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      pointer-events: none;
-      z-index: 0;
-    }
-    .hero-body, .hero-footer { position: relative; z-index: 1; }
-    .hero-body {
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      padding: 80px 32px 60px;
-    }
-    .hero-tag {
-      font-family: var(--mono);
-      font-size: 11px;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--grey-3);
+      grid-template-columns: 1fr auto;
+      gap: 0 32px;
+      align-items: start;
       margin-bottom: 28px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
+      padding-bottom: 20px;
+      border-bottom: 1.5px solid #000;
     }
-    .hero-tag::before {
-      content: '';
-      display: inline-block;
-      width: 20px;
-      height: 1px;
-      background: var(--grey-3);
-    }
-    .hero-name {
-      font-size: clamp(64px, 10vw, 130px);
+
+    .cv-name {
+      font-size: 21px;
       font-weight: 700;
-      line-height: 0.92;
-      letter-spacing: -0.04em;
-      margin-bottom: 48px;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      margin-bottom: 3px;
     }
-    .hero-name .surname {
-      color: var(--grey-3);
+
+    .cv-sub {
+      font-size: 12px;
+      color: #666;
     }
-    .hero-footer {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      border-top: 1px solid var(--border);
+
+    .cv-contact {
+      text-align: right;
+      font-size: 11.5px;
+      line-height: 1.85;
     }
-    .hero-footer-cell {
-      padding: 20px 32px;
-      border-right: 1px solid var(--border);
-    }
-    .hero-footer-cell:last-child { border-right: none; }
-    .cell-label {
-      font-family: var(--mono);
-      font-size: 10px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--grey-3);
-      margin-bottom: 6px;
-    }
-    .cell-value {
-      font-size: 13px;
-      color: var(--grey-1);
-      font-weight: 500;
-    }
-    .cell-value a {
-      color: var(--grey-1);
+
+    .cv-contact a {
+      color: #000;
       text-decoration: none;
-      transition: color 0.2s;
     }
-    .cell-value a:hover { color: var(--white); }
+    .cv-contact a:hover { text-decoration: underline; }
 
-    /* ─── ABOUT ───────────────────────────────── */
-    #about {
-      display: grid;
-      grid-template-columns: 280px 1fr;
-      border-bottom: 1px solid var(--border);
+    /* ── SECTIONS ── */
+    .section {
+      margin-bottom: 24px;
     }
-    .about-label-col {
-      padding: 64px 32px;
-      border-right: 1px solid var(--border);
-    }
-    .about-content-col {
-      padding: 64px 48px;
-    }
-    .section-label {
-      font-family: var(--mono);
+
+    .section-title {
       font-size: 11px;
-      letter-spacing: 0.12em;
+      font-weight: 700;
       text-transform: uppercase;
-      color: var(--grey-3);
-    }
-    .about-text {
-      font-size: 22px;
-      font-weight: 400;
-      line-height: 1.55;
-      color: var(--grey-1);
-      max-width: 600px;
-    }
-    .about-text strong {
-      color: var(--white);
-      font-weight: 600;
+      letter-spacing: 0.1em;
+      margin-bottom: 12px;
+      padding-bottom: 5px;
+      border-bottom: 1px solid #000;
     }
 
-    /* ─── EXPERIENCE ──────────────────────────── */
-    #experience {
-      border-bottom: 1px solid var(--border);
-    }
-    .exp-header {
-      display: grid;
-      grid-template-columns: 280px 1fr;
-      padding: 48px 32px;
-      border-bottom: 1px solid var(--border);
-    }
-    .exp-header .section-label { align-self: center; }
-    .exp-header-right {
-      padding-left: 16px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .exp-count {
-      font-family: var(--mono);
-      font-size: 11px;
-      color: var(--grey-3);
-      letter-spacing: 0.08em;
+    /* ── SUMMARY ── */
+    .summary-text {
+      font-size: 12.5px;
+      line-height: 1.65;
+      color: #111;
     }
 
+    /* ── EXPERIENCE ROWS ── */
     .exp-row {
       display: grid;
-      grid-template-columns: 280px 1fr;
-      border-bottom: 1px solid var(--border);
-      transition: background 0.2s;
-    }
-    .exp-row:last-child { border-bottom: none; }
-    .exp-row:hover { background: var(--grey-5); }
-
-    .exp-left {
-      padding: 40px 32px;
-      border-right: 1px solid var(--border);
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-    .exp-company-name {
-      font-size: 16px;
-      font-weight: 600;
-      color: var(--white);
-      letter-spacing: -0.01em;
-    }
-    .exp-period {
-      font-family: var(--mono);
-      font-size: 11px;
-      color: var(--grey-3);
-      letter-spacing: 0.04em;
-    }
-    .exp-badge {
-      display: inline-block;
-      font-family: var(--mono);
-      font-size: 10px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--grey-3);
-      border: 1px solid var(--border);
-      border-radius: 2px;
-      padding: 3px 8px;
-      width: fit-content;
-    }
-
-    .exp-right {
-      padding: 40px 48px;
-    }
-    .exp-role-title {
-      font-size: 14px;
-      color: var(--grey-2);
-      font-weight: 500;
-      margin-bottom: 16px;
-      letter-spacing: 0.01em;
-    }
-    .exp-desc {
-      font-size: 13px;
-      color: var(--grey-3);
+      grid-template-columns: 112px 1fr;
+      gap: 0 20px;
       margin-bottom: 20px;
-      font-style: italic;
-      line-height: 1.6;
     }
+    .exp-row:last-child { margin-bottom: 0; }
+
+    .exp-date {
+      font-size: 11px;
+      color: #666;
+      padding-top: 1px;
+      line-height: 1.5;
+    }
+
+    .exp-right {}
+
+    .exp-title-line {
+      font-size: 12.5px;
+      font-weight: 600;
+      margin-bottom: 4px;
+      line-height: 1.4;
+    }
+
+    .exp-desc {
+      font-size: 11.5px;
+      color: #555;
+      font-style: italic;
+      margin-bottom: 7px;
+      line-height: 1.55;
+    }
+
     .exp-bullets {
       list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
+      margin-bottom: 8px;
     }
     .exp-bullets li {
-      font-size: 14px;
-      color: var(--grey-2);
+      font-size: 11.5px;
+      color: #222;
       line-height: 1.6;
-      display: grid;
-      grid-template-columns: 16px 1fr;
-      gap: 8px;
+      padding-left: 12px;
+      position: relative;
+      margin-bottom: 2px;
     }
     .exp-bullets li::before {
-      content: '↗';
-      font-size: 11px;
-      color: var(--grey-3);
-      padding-top: 3px;
+      content: '•';
+      position: absolute;
+      left: 0;
+      color: #888;
     }
-    .exp-bullets .stat {
-      color: var(--white);
-      font-weight: 600;
-    }
+    .stat { font-weight: 600; }
 
-    /* ─── SKILLS ──────────────────────────────── */
-    #skills {
-      display: grid;
-      grid-template-columns: 280px 1fr;
-      border-bottom: 1px solid var(--border);
-    }
-    .skills-label-col {
-      padding: 64px 32px;
-      border-right: 1px solid var(--border);
-    }
-    .skills-content-col {
-      padding: 64px 48px;
-      display: flex;
-      flex-direction: column;
-      gap: 48px;
-    }
-    .skill-group {}
-    .skill-group-title {
-      font-family: var(--mono);
-      font-size: 11px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--grey-3);
-      margin-bottom: 16px;
-    }
-    .tag-wrap {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-    .tag {
-      font-size: 13px;
-      font-weight: 500;
-      color: var(--grey-1);
-      background: var(--grey-5);
-      border: 1px solid var(--border);
-      border-radius: 3px;
-      padding: 6px 14px;
-      letter-spacing: 0.01em;
-    }
-
-    /* ─── CONTACT ─────────────────────────────── */
-    #contact {
-      display: grid;
-      grid-template-columns: 280px 1fr;
-      border-bottom: 1px solid var(--border);
-    }
-    .contact-label-col {
-      padding: 64px 32px;
-      border-right: 1px solid var(--border);
-    }
-    .contact-content-col {
-      padding: 64px 48px;
-    }
-    .contact-heading {
-      font-size: clamp(32px, 4vw, 52px);
-      font-weight: 700;
-      letter-spacing: -0.03em;
-      line-height: 1.1;
-      margin-bottom: 40px;
-      color: var(--grey-1);
-    }
-    .contact-heading span { color: var(--white); }
-    .contact-links {
-      display: flex;
-      flex-direction: column;
-      gap: 0;
-    }
-    .contact-link {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 20px 0;
-      border-top: 1px solid var(--border);
-      text-decoration: none;
-      color: var(--grey-2);
-      transition: color 0.2s;
-      font-size: 15px;
-      font-weight: 500;
-    }
-    .contact-link:last-child { border-bottom: 1px solid var(--border); }
-    .contact-link:hover { color: var(--white); }
-    .contact-link .arrow {
-      font-family: var(--mono);
-      font-size: 12px;
-      color: var(--grey-3);
-      transition: color 0.2s, transform 0.2s;
-    }
-    .contact-link:hover .arrow { color: var(--white); transform: translate(2px, -2px); }
-
-    /* ─── FOOTER ──────────────────────────────── */
-    footer {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 20px 32px;
-    }
-    .footer-copy {
-      font-family: var(--mono);
-      font-size: 11px;
-      color: var(--grey-3);
-      letter-spacing: 0.06em;
-    }
-    .footer-status {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-family: var(--mono);
-      font-size: 11px;
-      color: var(--grey-3);
-      letter-spacing: 0.06em;
-    }
-    .status-dot {
-      width: 6px; height: 6px;
-      border-radius: 50%;
-      background: #22c55e;
-      animation: pulse 2.5s ease-in-out infinite;
-    }
-    @keyframes pulse {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.3; }
-    }
-
-    /* ─── CLUB APPS ──────────────────────────── */
-    .club-apps { margin-top: 24px; }
-    .club-apps-label {
-      font-family: var(--mono);
-      font-size: 10px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--grey-3);
-      margin-bottom: 10px;
-    }
-    .club-apps-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-    .club-app-link {
-      display: flex;
-      align-items: center;
-      gap: 9px;
-      padding: 7px 13px 7px 8px;
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      text-decoration: none;
-      color: var(--grey-2);
-      font-size: 12px;
-      font-family: var(--mono);
-      letter-spacing: 0.06em;
-      transition: border-color 0.2s, color 0.2s, background 0.2s;
-    }
-    .club-app-link:hover { border-color: var(--grey-3); color: var(--white); background: var(--grey-5); }
-    .club-app-link svg { flex-shrink: 0; border-radius: 50%; }
-
-    /* ─── MORE LINK ──────────────────────────── */
-    .exp-more-link {
+    .more-link {
       display: inline-block;
-      margin-top: 20px;
-      font-family: var(--mono);
       font-size: 11px;
-      letter-spacing: 0.08em;
-      color: var(--grey-3);
+      color: #0052cc;
       text-decoration: none;
-      border-bottom: 1px solid var(--border);
-      padding-bottom: 2px;
-      transition: color 0.2s, border-color 0.2s;
+      margin-top: 4px;
     }
-    .exp-more-link:hover { color: var(--white); border-color: var(--grey-3); }
+    .more-link:hover { text-decoration: underline; }
 
-    /* ─── SCROLL REVEAL ───────────────────────── */
-    .reveal {
-      opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
+    /* club apps */
+    .club-apps { margin: 8px 0 8px; }
+    .club-apps-lbl {
+      font-size: 10px;
+      color: #888;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 5px;
     }
-    .reveal.visible {
-      opacity: 1;
-      transform: none;
+    .club-apps-list { display: flex; gap: 6px; flex-wrap: wrap; }
+    .club-app-link {
+      display: flex; align-items: center; gap: 6px;
+      padding: 3px 9px 3px 5px;
+      border: 1px solid #ddd;
+      text-decoration: none;
+      color: #333;
+      font-size: 10.5px;
+      transition: border-color .15s;
+    }
+    .club-app-link:hover { border-color: #999; }
+    .club-app-link svg { border-radius: 50%; }
+
+    /* ── SKILLS ── */
+    .skills-block {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .skill-line {
+      font-size: 12px;
+      line-height: 1.6;
+      color: #222;
+    }
+    .skill-line strong {
+      font-weight: 600;
+      color: #000;
     }
 
-    /* ─── RESPONSIVE ──────────────────────────── */
-    @media (max-width: 700px) {
-      nav { padding: 0 20px; }
-      .nav-links { display: none; }
-      .hero-body { padding: 60px 20px 48px; }
-      .hero-footer { grid-template-columns: 1fr; }
-      .hero-footer-cell { border-right: none; border-top: 1px solid var(--border); }
-      #about, #skills, #contact { grid-template-columns: 1fr; }
-      .about-label-col, .skills-label-col, .contact-label-col { padding: 32px 20px 0; border-right: none; }
-      .about-content-col, .skills-content-col, .contact-content-col { padding: 24px 20px 48px; }
-      .about-text { font-size: 18px; }
-      .exp-header, .exp-row { grid-template-columns: 1fr; }
-      .exp-left { border-right: none; border-bottom: 1px solid var(--border); padding: 24px 20px; }
-      .exp-right { padding: 24px 20px; }
-      .exp-header { padding: 32px 20px; }
+    /* ── SIMPLE LIST (languages, interests) ── */
+    .simple-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px 24px;
+      font-size: 12.5px;
+      color: #222;
+    }
+
+    /* ── EDUCATION ROW ── */
+    .edu-row {
+      display: grid;
+      grid-template-columns: 112px 1fr;
+      gap: 0 20px;
+    }
+    .edu-date {
+      font-size: 11px;
+      color: #666;
+      padding-top: 1px;
+    }
+    .edu-right {}
+    .edu-name {
+      font-size: 12.5px;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+    .edu-detail {
+      font-size: 11.5px;
+      color: #555;
+    }
+
+    /* ── CURSOR ── */
+    #gcursor {
+      position: fixed; top: 0; left: 0;
+      pointer-events: none; z-index: 99999;
+    }
+
+    /* ── MOBILE ── */
+    @media (max-width: 560px) {
+      .page { padding: 32px 20px 60px; }
+      .cv-header { grid-template-columns: 1fr; gap: 12px; }
+      .cv-contact { text-align: left; }
+      .exp-row, .edu-row { grid-template-columns: 1fr; gap: 2px; }
+      .exp-date, .edu-date { color: #888; }
     }
   </style>
 </head>
 <body>
+<div class="page">
 
-  <!-- NAV -->
-  <nav>
-    <a class="nav-logo" href="#hero">Artem Yarmosh</a>
-    <ul class="nav-links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#experience">Work</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
+  <!-- HEADER -->
+  <header class="cv-header">
+    <div>
+      <h1 class="cv-name">Artem Yarmosh</h1>
+      <p class="cv-sub">based in Kyiv</p>
+    </div>
+    <div class="cv-contact">
+      <a href="mailto:art.yarmosh@gmail.com">art.yarmosh@gmail.com</a><br>
+      <a href="https://t.me/artyarmosh" target="_blank" rel="noopener">t.me/artyarmosh</a><br>
+      <a href="tel:+380631526797">+380 63 152 6797</a><br>
+      <a href="https://linkedin.com/in/artem-yarmosh-349b6b160/" target="_blank" rel="noopener">linkedin.com/in/artem-yarmosh-349b6b160</a>
+    </div>
+  </header>
 
-  <!-- HERO -->
-  <section id="hero">
-    <canvas id="hero-canvas"></canvas>
-    <div class="hero-body">
-      <p class="hero-tag">Product &amp; Engineering Lead — Kyiv</p>
-      <h1 class="hero-name">
-        Artem<br><span class="surname">Yarmosh</span>
-      </h1>
-    </div>
-    <div class="hero-footer">
-      <div class="hero-footer-cell">
-        <p class="cell-label">Role</p>
-        <p class="cell-value">Head of Product / Product Manager</p>
-      </div>
-      <div class="hero-footer-cell">
-        <p class="cell-label">Experience</p>
-        <p class="cell-value">7 years</p>
-      </div>
-      <div class="hero-footer-cell">
-        <p class="cell-label">Contact</p>
-        <p class="cell-value"><a href="mailto:art.yarmosh@gmail.com">art.yarmosh@gmail.com</a></p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ABOUT -->
-  <section id="about">
-    <div class="about-label-col">
-      <span class="section-label">About</span>
-    </div>
-    <div class="about-content-col reveal">
-      <p class="about-text">
-        Product and engineering lead, with 7 years of experience. I've built apps from scratch, led cross-functional
-        teams, and shipped things at real scale across <strong>sports tech</strong>, <strong>live experiences</strong>, and <strong>Web3</strong>.
-        Looking for a full-time Head of Product or Senior Product Manager role.
-      </p>
-    </div>
+  <!-- SUMMARY -->
+  <section class="section">
+    <h2 class="section-title">Summary</h2>
+    <p class="summary-text">Product and engineering lead, with 7 years of experience. I've built apps from scratch, led cross-functional teams, and shipped things at real scale across sports tech, live experiences, and Web3. Looking for a full-time Head of Product or Senior Product Manager role.</p>
   </section>
 
   <!-- EXPERIENCE -->
-  <section id="experience">
-    <div class="exp-header">
-      <span class="section-label">Experience</span>
-      <div class="exp-header-right">
-        <span class="exp-count">05 companies</span>
-      </div>
-    </div>
+  <section class="section">
+    <h2 class="section-title">Experience</h2>
 
-    <!-- Entire Framework -->
-    <div class="exp-row reveal">
-      <div class="exp-left">
-        <p class="exp-company-name">Entire Framework</p>
-        <p class="exp-period">Sep 2024 — Present</p>
-        <span class="exp-badge">Agency</span>
-      </div>
+    <div class="exp-row">
+      <div class="exp-date">Sep 2024 — now</div>
       <div class="exp-right">
-        <p class="exp-role-title">Product Manager / Engineering Manager</p>
-        <p class="exp-desc">Kyiv-based development &amp; design bureau building digital products for businesses and creators.</p>
+        <p class="exp-title-line">Entire Framework, Product Manager / Engineering Manager, Agency</p>
+        <p class="exp-desc">A Kyiv-based development and design bureau building digital products for businesses and creators.</p>
         <ul class="exp-bullets">
-          <li><span>Overseeing product direction and delivery across client projects spanning showcase sites, e-commerce, and media platforms</span></li>
-          <li><span>Coordinating cross-functional work between design and engineering teams, ensuring quality and timeline alignment</span></li>
-          <li><span>Contributing to architectural decisions and external integration strategies</span></li>
+          <li>Overseeing product direction and delivery across client projects spanning showcase sites, e-commerce, and media platforms</li>
+          <li>Coordinating cross-functional work between design and engineering teams, ensuring quality and timeline alignment</li>
+          <li>Contributing to architectural decisions and external integration strategies</li>
         </ul>
-        <a class="exp-more-link" href="https://entireframework.com/" target="_blank" rel="noopener">More about Entire Framework ↗</a>
+        <a class="more-link" href="https://entireframework.com/" target="_blank" rel="noopener">More about Entire Framework</a>
       </div>
     </div>
 
-    <!-- Forza Clubs -->
-    <div class="exp-row reveal">
-      <div class="exp-left">
-        <p class="exp-company-name">Forza Clubs</p>
-        <p class="exp-period">Mar 2019 — Apr 2026</p>
-        <span class="exp-badge">Full-time</span>
-      </div>
+    <div class="exp-row">
+      <div class="exp-date">Mar 2019 — Apr 2026</div>
       <div class="exp-right">
-        <p class="exp-role-title">Product Manager / Engineering Manager</p>
-        <p class="exp-desc">Sports engineering company specializing in digital content platforms and livescore services for the sport organizations around the world.</p>
+        <p class="exp-title-line">Forza Clubs, Product Manager / Engineering Manager, Full-time</p>
+        <p class="exp-desc">Sports engineering company specializing in digital content platforms and livescore services for sport organizations worldwide.</p>
         <ul class="exp-bullets">
-          <li><span>Developed and managed a digital membership platform used by over <span class="stat">25 football clubs</span>, achieving <span class="stat">12M downloads</span> and <span class="stat">500K+ paying users</span></span></li>
-          <li><span>Led a cross-functional team of 10 in building a white-label product from concept to launch, resulting in an increase of <span class="stat">~70% in client digital revenue</span> on average</span></li>
-          <li><span>Conducted A/B testing to optimize app onboarding</span></li>
-          <li><span>Conducted data analysis in BigQuery to identify drop-off patterns, informing a full onboarding redesign that improved conversion rates</span></li>
-          <li><span>Tracked and reported on core product metrics, using data insights to drive prioritisation and roadmap decisions</span></li>
-          <li><span>Introduced new subscription models, increasing retention for existing subscribers</span></li>
-          <li><span>Led a complete CMS redesign, rethinking how content was managed across <span class="stat">25+ clubs</span> at scale</span></li>
+          <li>Developed and managed a digital membership platform used by over <span class="stat">25 football clubs</span>, achieving <span class="stat">12M downloads</span> and <span class="stat">500K+ paying users</span></li>
+          <li>Led a cross-functional team of 10 in building a white-label product from concept to launch, resulting in an increase of <span class="stat">~70% in client digital revenue</span> on average</li>
+          <li>Conducted A/B testing to optimize app onboarding</li>
+          <li>Conducted data analysis in BigQuery to identify drop-off patterns, informing a full onboarding redesign that improved conversion rates</li>
+          <li>Tracked and reported on core product metrics, using data insights to drive prioritisation and roadmap decisions</li>
+          <li>Introduced new subscription models, increasing retention for existing subscribers</li>
+          <li>Led a complete CMS redesign, rethinking how content was managed across <span class="stat">25+ clubs</span> at scale</li>
         </ul>
         <div class="club-apps">
-          <p class="club-apps-label">Client apps</p>
+          <p class="club-apps-lbl">Client apps</p>
           <div class="club-apps-list">
             <a class="club-app-link" href="https://agf.app.link/lD8UJUTvXHb" target="_blank" rel="noopener">
-              <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="12" cy="12" r="12" fill="#003087"/>
-                <text x="12" y="16.5" text-anchor="middle" font-family="system-ui,sans-serif" font-weight="700" font-size="7.5" fill="white">AGF</text>
-              </svg>
-              AGF
+              <svg width="16" height="16" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="#003087"/><text x="12" y="16.5" text-anchor="middle" font-family="system-ui,sans-serif" font-weight="700" font-size="7.5" fill="white">AGF</text></svg>AGF
             </a>
             <a class="club-app-link" href="https://aik.app.link/seep7crJd2b" target="_blank" rel="noopener">
-              <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="12" cy="12" r="12" fill="#111111"/>
-                <circle cx="12" cy="12" r="11" fill="none" stroke="#f5c01a" stroke-width="1.5"/>
-                <text x="12" y="16.5" text-anchor="middle" font-family="system-ui,sans-serif" font-weight="700" font-size="7.5" fill="#f5c01a">AIK</text>
-              </svg>
-              AIK
+              <svg width="16" height="16" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="#111"/><circle cx="12" cy="12" r="11" fill="none" stroke="#f5c01a" stroke-width="1.5"/><text x="12" y="16.5" text-anchor="middle" font-family="system-ui,sans-serif" font-weight="700" font-size="7.5" fill="#f5c01a">AIK</text></svg>AIK
             </a>
             <a class="club-app-link" href="https://ifk.app.link/dO0tCLUq0Cb" target="_blank" rel="noopener">
-              <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="12" cy="12" r="12" fill="#003399"/>
-                <text x="12" y="16.5" text-anchor="middle" font-family="system-ui,sans-serif" font-weight="700" font-size="7.5" fill="white">IFK</text>
-              </svg>
-              IFK
+              <svg width="16" height="16" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="#003399"/><text x="12" y="16.5" text-anchor="middle" font-family="system-ui,sans-serif" font-weight="700" font-size="7.5" fill="white">IFK</text></svg>IFK
             </a>
           </div>
         </div>
-        <a class="exp-more-link" href="https://www.linkedin.com/company/forza-club" target="_blank" rel="noopener">More about Forza Clubs ↗</a>
+        <a class="more-link" href="https://www.linkedin.com/company/forza-club" target="_blank" rel="noopener">More about Forza Clubs</a>
       </div>
     </div>
 
-    <!-- IRIS -->
-    <div class="exp-row reveal">
-      <div class="exp-left">
-        <p class="exp-company-name">IRIS</p>
-        <p class="exp-period">Dec 2023 — Nov 2024</p>
-        <span class="exp-badge">Contract</span>
-      </div>
+    <div class="exp-row">
+      <div class="exp-date">Dec 2023 — Nov 2024</div>
       <div class="exp-right">
-        <p class="exp-role-title">Product Manager</p>
+        <p class="exp-title-line">IRIS, Product Manager, Contract</p>
         <p class="exp-desc">Personal assistant management environment integrating apps, users, and communities — designed as a multiplayer layer for the internet focused on co-creation.</p>
         <ul class="exp-bullets">
-          <li><span>Led product delivery for a live concert experience built for Swedish artist Victor Leksell — synchronizing <span class="stat">20,000+ audience devices</span> in real time, including an interactive AI avatar and light show</span></li>
-          <li><span>Redefined product engineering strategy and feature roadmap for the broader collaboration platform</span></li>
-          <li><span>Coordinated delivery across design, engineering, and community teams</span></li>
+          <li>Led product delivery for a live concert experience built for Swedish artist Victor Leksell — synchronizing <span class="stat">20,000+ audience devices</span> in real time, including an interactive AI avatar and light show</li>
+          <li>Redefined product engineering strategy and feature roadmap for the broader collaboration platform</li>
+          <li>Coordinated delivery across design, engineering, and community teams</li>
         </ul>
-        <a class="exp-more-link" href="https://www.iris.me/" target="_blank" rel="noopener">More about IRIS ↗</a>
+        <a class="more-link" href="https://www.iris.me/" target="_blank" rel="noopener">More about IRIS</a>
       </div>
     </div>
 
-    <!-- Ikonia -->
-    <div class="exp-row reveal">
-      <div class="exp-left">
-        <p class="exp-company-name">Ikonia</p>
-        <p class="exp-period">Mar 2022 — Jun 2023</p>
-        <span class="exp-badge">Contract</span>
-      </div>
+    <div class="exp-row">
+      <div class="exp-date">Mar 2022 — Jun 2023</div>
       <div class="exp-right">
-        <p class="exp-role-title">Product Manager / People Operations</p>
+        <p class="exp-title-line">Ikonia, Product Manager / People Operations, Contract</p>
         <p class="exp-desc">Web3 product studio focused on gamification and NFT ecosystem tools.</p>
         <ul class="exp-bullets">
-          <li><span>Shipped NFT projects for <span class="stat">Snoop Dogg and Björn Borg</span>, driving platform credibility in the Web3 space</span></li>
-          <li><span>Built and launched Shortlist — a waitlist tool that converted <span class="stat">75% of signups</span> into active platform users</span></li>
-          <li><span>Drove an NFT payment solution enabling credit card purchases from concept to launch</span></li>
-          <li><span>Managed hiring pipeline and team operations</span></li>
+          <li>Shipped NFT projects for <span class="stat">Snoop Dogg and Björn Borg</span>, driving platform credibility in the Web3 space</li>
+          <li>Built and launched Shortlist — a waitlist tool that converted <span class="stat">75% of signups</span> into active platform users</li>
+          <li>Drove an NFT payment solution enabling credit card purchases from concept to launch</li>
+          <li>Managed hiring pipeline and team operations</li>
         </ul>
-        <a class="exp-more-link" href="https://www.ikonia.com/" target="_blank" rel="noopener">More about Ikonia ↗</a>
+        <a class="more-link" href="https://www.ikonia.com/" target="_blank" rel="noopener">More about Ikonia</a>
       </div>
     </div>
 
-    <!-- Logics7 -->
-    <div class="exp-row reveal">
-      <div class="exp-left">
-        <p class="exp-company-name">Logics7</p>
-        <p class="exp-period">Dec 2017 — May 2019</p>
-        <span class="exp-badge">Full-time</span>
-      </div>
+    <div class="exp-row">
+      <div class="exp-date">Dec 2017 — May 2019</div>
       <div class="exp-right">
-        <p class="exp-role-title">Project Manager / People Operations</p>
+        <p class="exp-title-line">Logics7, Project Manager / People Operations, Full-time</p>
         <p class="exp-desc">Software engineering company specializing in Facebook apps and games.</p>
         <ul class="exp-bullets">
-          <li><span>Managed project delivery timelines and client communications for multiple concurrent projects</span></li>
-          <li><span>Handled recruitment, onboarding, and day-to-day team operations</span></li>
+          <li>Managed project delivery timelines and client communications for multiple concurrent projects</li>
+          <li>Handled recruitment, onboarding, and day-to-day team operations</li>
         </ul>
-        <a class="exp-more-link" href="https://logics7.com/" target="_blank" rel="noopener">More about Logics7 ↗</a>
+        <a class="more-link" href="https://logics7.com/" target="_blank" rel="noopener">More about Logics7</a>
       </div>
     </div>
 
   </section>
 
   <!-- OTHER -->
-  <section id="experience" style="border-bottom: 1px solid var(--border);">
-    <div class="exp-header">
-      <span class="section-label">Other</span>
-      <div class="exp-header-right"></div>
-    </div>
+  <section class="section">
+    <h2 class="section-title">Other</h2>
 
-    <!-- Biorhythm -->
-    <div class="exp-row reveal">
-      <div class="exp-left">
-        <p class="exp-company-name">Biorhythm</p>
-        <p class="exp-period">Dec 2019 — Present</p>
-        <span class="exp-badge">Non-profit</span>
-      </div>
+    <div class="exp-row">
+      <div class="exp-date">Dec 2019 — now</div>
       <div class="exp-right">
-        <p class="exp-role-title">Producer</p>
+        <p class="exp-title-line">Biorhythm, Producer, Non-profit</p>
         <p class="exp-desc">Non-profit organization focused on audio-visual performances and ecological activism in Kyiv.</p>
         <ul class="exp-bullets">
-          <li><span>Produced and coordinated multi-format cultural events combining live music, visual art, and environmental messaging</span></li>
+          <li>Produced and coordinated multi-format cultural events combining live music, visual art, and environmental messaging</li>
         </ul>
-        <a class="exp-more-link" href="https://biorhythm.me/" target="_blank" rel="noopener">More about Biorhythm ↗</a>
+        <a class="more-link" href="https://biorhythm.me/" target="_blank" rel="noopener">More about Biorhythm</a>
       </div>
     </div>
 
+  </section>
+
+  <!-- EDUCATION -->
+  <section class="section">
+    <h2 class="section-title">Education</h2>
+    <div class="edu-row">
+      <div class="edu-date">2015 — 2021</div>
+      <div class="edu-right">
+        <p class="edu-name">National University of Life and Environmental Sciences of Ukraine</p>
+        <p class="edu-detail">Master's degree, Ecology</p>
+      </div>
+    </div>
   </section>
 
   <!-- SKILLS -->
-  <section id="skills">
-    <div class="skills-label-col">
-      <span class="section-label">Skills</span>
-    </div>
-    <div class="skills-content-col reveal">
-
-      <div class="skill-group">
-        <p class="skill-group-title">Tools</p>
-        <div class="tag-wrap">
-          <span class="tag">Figma</span>
-          <span class="tag">Jira</span>
-          <span class="tag">Linear</span>
-          <span class="tag">ClickUp</span>
-          <span class="tag">Firebase</span>
-          <span class="tag">PostHog</span>
-          <span class="tag">Branch.io</span>
-          <span class="tag">GitHub</span>
-          <span class="tag">GitLab</span>
-          <span class="tag">MindMeister</span>
-        </div>
-      </div>
-
-      <div class="skill-group">
-        <p class="skill-group-title">Methods</p>
-        <div class="tag-wrap">
-          <span class="tag">A/B Testing</span>
-          <span class="tag">NPS</span>
-          <span class="tag">User Surveys</span>
-          <span class="tag">Subscription Monetisation</span>
-          <span class="tag">White-label Products</span>
-          <span class="tag">Onboarding Optimisation</span>
-          <span class="tag">Cross-functional Leadership</span>
-          <span class="tag">Data Analysis (BigQuery)</span>
-        </div>
-      </div>
-
-      <div class="skill-group">
-        <p class="skill-group-title">AI</p>
-        <div class="tag-wrap">
-          <span class="tag">Prompt Engineering</span>
-          <span class="tag">LLM Product Design</span>
-          <span class="tag">AI Agent Workflows</span>
-          <span class="tag">GPT / Claude API</span>
-          <span class="tag">Multi-agent Systems</span>
-          <span class="tag">v0 / Cursor</span>
-        </div>
-      </div>
-
+  <section class="section">
+    <h2 class="section-title">Skills</h2>
+    <div class="skills-block">
+      <p class="skill-line"><strong>Tools:</strong> Figma, Jira, ClickUp, Linear, MindMeister, Firebase, PostHog, Branch.io, GitHub, GitLab</p>
+      <p class="skill-line"><strong>Methods:</strong> A/B testing, NPS, user surveys, subscription monetisation, white-label products, cross-functional leadership, onboarding optimisation</p>
+      <p class="skill-line"><strong>AI:</strong> Prompt engineering, LLM-powered product design, AI agent workflows, GPT / Claude API, AI prototyping (v0, Cursor), multi-agent environments</p>
     </div>
   </section>
 
-  <!-- CONTACT -->
-  <section id="contact">
-    <div class="contact-label-col">
-      <span class="section-label">Contact</span>
-    </div>
-    <div class="contact-content-col reveal">
-      <p class="contact-heading">
-        <span>Open to</span><br>new roles
-      </p>
-      <div class="contact-links">
-        <a class="contact-link" href="mailto:art.yarmosh@gmail.com">
-          <span>art.yarmosh@gmail.com</span>
-          <span class="arrow">↗</span>
-        </a>
-        <a class="contact-link" href="https://linkedin.com/in/artem-yarmosh-349b6b160/" target="_blank" rel="noopener">
-          <span>LinkedIn</span>
-          <span class="arrow">↗</span>
-        </a>
-        <a class="contact-link" href="https://t.me/artyarmosh" target="_blank" rel="noopener">
-          <span>Telegram</span>
-          <span class="arrow">↗</span>
-        </a>
-        <a class="contact-link" href="tel:+380631526797">
-          <span>+380 63 152 6797</span>
-          <span class="arrow">↗</span>
-        </a>
-      </div>
+  <!-- LANGUAGES -->
+  <section class="section">
+    <h2 class="section-title">Languages</h2>
+    <div class="simple-list">
+      <span>English</span>
+      <span>Ukrainian</span>
     </div>
   </section>
 
-  <!-- FOOTER -->
-  <footer>
-    <span class="footer-copy">© 2026 Artem Yarmosh</span>
-    <span class="footer-status">
-      <span class="status-dot"></span>
-      Available for work
-    </span>
-  </footer>
+  <!-- INTERESTS -->
+  <section class="section">
+    <h2 class="section-title">Interests</h2>
+    <div class="simple-list">
+      <span>Tech</span>
+      <span>Electronic music</span>
+      <span>Guitar</span>
+      <span>Drums</span>
+      <span>Fashion</span>
+      <span>Theology</span>
+    </div>
+  </section>
 
+</div>
+
+  <!-- fluid cursor -->
   <script>
-    /* ── Hero canvas: interactive dot grid ── */
-    (function () {
-      const canvas = document.getElementById('hero-canvas');
-      const ctx = canvas.getContext('2d');
-      const SPACING = 44;
-      const DOT_R = 1.2;
-      const REPEL_R = 130;
-      const REPEL_FORCE = 52;
-      const CONNECT_R = 90;
+  (function(){
+    const W=80,H=80,CX=W/2,CY=H/2;
+    const cv=document.createElement('canvas');
+    cv.id='gcursor'; cv.width=W; cv.height=H;
+    document.body.appendChild(cv);
+    const ctx=cv.getContext('2d');
 
-      let mouse = { x: -9999, y: -9999 };
-      let dots = [];
+    let mx=-300,my=-300;
+    let cx=-300,cy=-300;
+    let gx=-300,gy=-300;
+    let pvx=0,pvy=0;
+    let ppx=cx,ppy=cy;
+    let t=0;
 
-      function build() {
-        canvas.width = canvas.offsetWidth;
-        canvas.height = canvas.offsetHeight;
-        dots = [];
-        const cols = Math.ceil(canvas.width  / SPACING) + 1;
-        const rows = Math.ceil(canvas.height / SPACING) + 1;
-        for (let r = 0; r < rows; r++) {
-          for (let c = 0; c < cols; c++) {
-            dots.push({ ox: c * SPACING, oy: r * SPACING,
-                         x:  c * SPACING,  y: r * SPACING,
-                         vx: 0, vy: 0 });
-          }
-        }
+    function lerp(a,b,s){return a+(b-a)*s;}
+
+    const N=8;
+    const blob=Array.from({length:N},(_,i)=>({
+      phase:Math.random()*Math.PI*2,
+      freq:0.28+Math.random()*0.35,
+      amp:1.8+Math.random()*2.4,
+      baseR:12,
+      a:(i/N)*Math.PI*2,
+    }));
+    const aura=Array.from({length:N},(_,i)=>({
+      phase:Math.random()*Math.PI*2,
+      freq:0.18+Math.random()*0.25,
+      amp:2.2+Math.random()*3.0,
+      baseR:18,
+      a:(i/N)*Math.PI*2+0.22,
+    }));
+
+    function drawBlob(pts){
+      const n=pts.length;
+      ctx.beginPath();
+      for(let i=0;i<n;i++){
+        const p0=pts[(i-1+n)%n],p1=pts[i],p2=pts[(i+1)%n],p3=pts[(i+2)%n];
+        if(i===0)ctx.moveTo(p1.x,p1.y);
+        ctx.bezierCurveTo(
+          p1.x+(p2.x-p0.x)/6,p1.y+(p2.y-p0.y)/6,
+          p2.x-(p3.x-p1.x)/6,p2.y-(p3.y-p1.y)/6,
+          p2.x,p2.y
+        );
       }
+      ctx.closePath();
+    }
 
-      function draw() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-        /* update positions */
-        for (const d of dots) {
-          const dx = d.x - mouse.x, dy = d.y - mouse.y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-          let rx = 0, ry = 0;
-          if (dist < REPEL_R && dist > 0) {
-            const f = (1 - dist / REPEL_R) * REPEL_FORCE;
-            rx = (dx / dist) * f;
-            ry = (dy / dist) * f;
-          }
-          d.vx = (d.vx + (d.ox - d.x) * 0.08 + rx) * 0.75;
-          d.vy = (d.vy + (d.oy - d.y) * 0.08 + ry) * 0.75;
-          d.x += d.vx;
-          d.y += d.vy;
-        }
-
-        /* draw lines between nearby dots when mouse is close */
-        ctx.strokeStyle = 'rgba(0,0,0,0.05)';
-        ctx.lineWidth = 0.5;
-        for (let i = 0; i < dots.length; i++) {
-          const a = dots[i];
-          const dax = a.x - mouse.x, day = a.y - mouse.y;
-          const daMouse = Math.sqrt(dax * dax + day * day);
-          if (daMouse > REPEL_R * 1.4) continue;
-          for (let j = i + 1; j < dots.length; j++) {
-            const b = dots[j];
-            const ddx = a.x - b.x, ddy = a.y - b.y;
-            const dd = Math.sqrt(ddx * ddx + ddy * ddy);
-            if (dd < CONNECT_R) {
-              const alpha = (1 - dd / CONNECT_R) * 0.12 * (1 - daMouse / (REPEL_R * 1.4));
-              ctx.strokeStyle = `rgba(0,0,0,${alpha})`;
-              ctx.beginPath();
-              ctx.moveTo(a.x, a.y);
-              ctx.lineTo(b.x, b.y);
-              ctx.stroke();
-            }
-          }
-        }
-
-        /* draw dots */
-        for (const d of dots) {
-          const dx = d.x - mouse.x, dy = d.y - mouse.y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-          const alpha = dist < REPEL_R
-            ? 0.18 + (1 - dist / REPEL_R) * 0.18
-            : 0.18;
-          ctx.beginPath();
-          ctx.arc(d.x, d.y, DOT_R, 0, Math.PI * 2);
-          ctx.fillStyle = `rgba(0,0,0,${alpha})`;
-          ctx.fill();
-        }
-
-        requestAnimationFrame(draw);
-      }
-
-      build();
-      draw();
-
-      window.addEventListener('resize', build);
-
-      document.getElementById('hero').addEventListener('mousemove', e => {
-        const r = canvas.getBoundingClientRect();
-        mouse.x = e.clientX - r.left;
-        mouse.y = e.clientY - r.top;
+    function getVerts(spec,time,ox,oy,velX,velY){
+      const speed=Math.sqrt(velX*velX+velY*velY);
+      const stretch=Math.min(speed*0.038,0.50);
+      const moveAngle=Math.atan2(velY,velX);
+      const cosA=Math.cos(moveAngle),sinA=Math.sin(moveAngle);
+      const sx=1+stretch,sy=1/(1+stretch*0.55);
+      return spec.map(p=>{
+        const r=p.baseR+Math.sin(time*p.freq+p.phase)*p.amp;
+        const lx=Math.cos(p.a)*r,ly=Math.sin(p.a)*r;
+        const mx2=lx*cosA+ly*sinA,my2=-lx*sinA+ly*cosA;
+        const sx2=mx2*sx,sy2=my2*sy;
+        return{x:ox+sx2*cosA-sy2*sinA,y:oy+sx2*sinA+sy2*cosA};
       });
-      document.getElementById('hero').addEventListener('mouseleave', () => {
-        mouse.x = -9999; mouse.y = -9999;
-      });
-    })();
+    }
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          e.target.classList.add('visible');
-          observer.unobserve(e.target);
-        }
-      });
-    }, { threshold: 0.1 });
+    document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;});
 
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    let last=performance.now();
+    function frame(now){
+      const dt=Math.min(now-last,40);last=now;
+      t+=dt*0.001;
+      cx=lerp(cx,mx,0.15);cy=lerp(cy,my,0.15);
+      gx=lerp(gx,mx,0.06);gy=lerp(gy,my,0.06);
+      pvx=lerp(pvx,(cx-ppx)*(60/Math.max(dt,1)),0.18);
+      pvy=lerp(pvy,(cy-ppy)*(60/Math.max(dt,1)),0.18);
+      ppx=cx;ppy=cy;
+      const gvx=(gx-cx)*0.5,gvy=(gy-cy)*0.5;
+      cv.style.transform=`translate(${cx-CX}px,${cy-CY}px)`;
+      ctx.clearRect(0,0,W,H);
+      const auraOx=CX+(gx-cx),auraOy=CY+(gy-cy);
+      const aVerts=getVerts(aura,t*0.75,auraOx,auraOy,gvx,gvy);
+      ctx.globalAlpha=0.12;
+      drawBlob(aVerts);ctx.fillStyle='#00ff55';ctx.fill();
+      ctx.globalAlpha=0.22+Math.sin(t*2.2)*0.10;
+      drawBlob(aVerts);ctx.strokeStyle='#00ff55';ctx.lineWidth=1.1;ctx.stroke();
+      const mVerts=getVerts(blob,t,CX,CY,pvx,pvy);
+      const grad=ctx.createRadialGradient(CX-3,CY-4,0,CX,CY,15);
+      grad.addColorStop(0,'rgba(255,140,215,0.96)');
+      grad.addColorStop(0.55,'rgba(220,25,155,0.92)');
+      grad.addColorStop(1,'rgba(130,0,95,0.85)');
+      ctx.globalAlpha=0.93;
+      drawBlob(mVerts);ctx.fillStyle=grad;ctx.fill();
+      ctx.globalAlpha=0.28+Math.sin(t*2.8)*0.09;
+      const hl=ctx.createRadialGradient(CX-4,CY-5,0,CX-3,CY-4,5);
+      hl.addColorStop(0,'rgba(255,210,245,1)');hl.addColorStop(1,'rgba(255,210,245,0)');
+      ctx.fillStyle=hl;ctx.beginPath();ctx.arc(CX-4,CY-5,5,0,Math.PI*2);ctx.fill();
+      ctx.globalAlpha=0.08+Math.sin(t*1.4)*0.05;
+      const a2Verts=getVerts(aura,t*0.55,auraOx,auraOy,gvx*0.5,gvy*0.5);
+      drawBlob(a2Verts);ctx.strokeStyle='#00ff55';ctx.lineWidth=0.7;ctx.stroke();
+      ctx.globalAlpha=1;
+      requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+  })();
   </script>
 
 </body>
